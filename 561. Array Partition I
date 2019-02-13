@@ -1,0 +1,24 @@
+class Solution:
+    def arrayPairSum(self, nums: 'List[int]') -> 'int':
+        
+        self.quicksort(nums, start=0, end = len(nums)-1)
+        
+        return sum(nums[::2])
+        
+    def quicksort(self, nums,start,end):
+        if start<end:           
+            pindex = self.partition(nums,start,end)       
+            self.quicksort(nums, start, pindex-1)
+            self.quicksort(nums, pindex+1, end)
+        return nums
+    
+    def partition(self,nums,start,end):
+        pindex= start
+        pivot = nums[end]
+        for i in range(start,end):
+            if nums[i]<=pivot:
+                nums[pindex], nums[i] = nums[i], nums[pindex]
+                pindex = pindex+1
+        nums[pindex], nums[end] = nums[end], nums[pindex]
+        return pindex
+                
