@@ -1,0 +1,19 @@
+class Solution(object):
+    
+    def isselfdividing(self, i):
+        for j in str(i):
+            if j=="0" or i%int(j) != 0:
+                return False
+        return True
+    def selfDividingNumbers(self, left, right):
+        """
+        :type left: int
+        :type right: int
+        :rtype: List[int]
+        """
+        l = []
+        for i in range(left, right+1):
+            if  self.isselfdividing(i):
+                l.append(i)
+        return l
+                
