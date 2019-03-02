@@ -1,0 +1,19 @@
+class Solution(object):
+    def binaryGap(self, N):
+        """
+        :type N: int
+        :rtype: int
+        """
+        c=0
+        x=0
+        s = str(bin(N))
+        for i in range(len(s)):
+            if s[i] == "1":
+                x +=1
+                if x==1:
+                    l =i
+                l=min(l,i)
+                r=i
+                c = max(c,r-l)
+                l=r
+        return c
