@@ -1,0 +1,27 @@
+class Solution(object):
+    def stoneGame(self, piles):
+        """
+        :type piles: List[int]
+        :rtype: bool
+        """
+        left = 1
+        right = len(piles)-1
+        alex = 0
+        lee =0   
+        i =1
+        while left <right:
+            if i%2 !=0:
+                m =max(piles[left], piles[right])
+                alex +=m
+                if m == piles[left]:
+                    left +=1
+                else:
+                    right -=1
+            else:
+                m =max(piles[left], piles[right])
+                lee +=m
+                if m == piles[left]:
+                    left +=1
+                else:
+                    right -=1
+        return alex>lee
