@@ -1,0 +1,28 @@
+class graph:
+    def __init__(self, n):
+        self.vertices = {i for i in range(1,n+1)}
+        self.edges = [[0 for i in range(n)] for i in range(n)]
+        self.indices = []
+    def addedge(self, u, v):
+        if u in self.vertices and v in self.vertices:
+            self.edges[u-1][v-1] = 1
+
+class Solution(object):
+    def findJudge(self, N, trust):
+        """
+        :type N: int
+        :type trust: List[List[int]]
+        :rtype: int
+        """
+        g = graph(N)
+        for i in trust:
+            g.addedge(i[0],i[1])
+        for i in range(N):
+            s =0
+            t = 0
+            for j in range(N):
+                s += g.edges[i][j]
+                t += g.edges[j][i]
+            if s==0 and t == N-1:
+                return i+1
+        return -1
